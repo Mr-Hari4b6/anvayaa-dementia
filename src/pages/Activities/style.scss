@@ -1,0 +1,23 @@
+.ant-card .ant-card-body {
+    padding: 0;
+}
+
+.custom-card {
+    background-color: lightgray;
+    transition: transform 0.2s ease-out;
+}
+
+.custom-card:hover {
+   
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+}

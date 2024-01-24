@@ -1,151 +1,162 @@
-
-import React, {ReactNode} from 'react';
-
-import type { MenuProps } from 'antd';
-import { Layout, Menu, theme, Radio, Select } from 'antd';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-
-import { DatePicker, Space } from 'antd';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { Layout, Menu, theme, Image, Drawer, Button } from 'antd';
+import { Outlet, Link } from 'react-router-dom';
+import profile from '../../assets/profile.jpg';
+import logo from '../../assets/pwdlogo.png';
 
 const { Header, Content, Sider } = Layout;
-// const { TextArea } = Input;
 
-const { RangePicker } = DatePicker;
-const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
-
-const items2: MenuProps['items'] = [
+const items2 = [
   {
     key: 'profile',
     label: 'Profile',
-    path:"/profile",
-    
+    path: '/layout/profile',
   },
   {
     key: 'password',
     label: 'Password',
+    path: '/layout/password',
   },
   {
     key: 'assessments',
-    label: 'Assessments',   
+    label: 'Assessments',
   },
   {
-    key: 'Activities',
+    key: 'activities',
     label: 'Activities',
+    path: '/layout/activities',
   },
   {
-    key: 'Adding Remainders',
+    key: 'adding remainders',
     label: 'Adding Remainders',
   },
   {
-    key: 'View Details',
+    key: 'view details',
     label: 'View Details',
   },
   {
-    key: 'Completed Activites',
+    key: 'completed activites',
     label: 'Completed Activites',
   },
+  {
+    key: 'logout',
+    label: 'Logout',
+    path: '/',
+  },
 ];
-interface SidebarProps {
-    children: ReactNode;
-}
- 
-const DashBoard: React.FC<SidebarProps> = ({children}) => {
-  const { token } = theme.useToken();
 
-  const handleMenuItemClick = (key: string | number) => {
-    // Handle click logic for each menu item
-    console.log(`Clicked on ${key}`);
+interface SidebarProps {
+  children: ReactNode;
+}
+
+const LayoutModule: React.FC<SidebarProps> = ({ children }) => {
+  const { token } = theme.useToken();
+  const [selectedKey, setSelectedKey] = useState<string>('profile');
+  const [visible, setVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+      if (!isDesktop) {
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isDesktop]);
+
+  const handleMenuItemClick = (key: string) => {
+    setSelectedKey(key);
+    if (!isDesktop) {
+      setVisible(false);
+    }
   };
 
+  const calculateBackgroundColor = (key: string) => {
+    const percentage = key === selectedKey ? 5 : 0;
+    return `linear-gradient(90deg, purple ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
+  };
 
   return (
-    <Layout>
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="demo-logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} style={{ flex: 1, minWidth: 0 }} />
+    <Layout style={{ minHeight: '100%' }}>
+      <Header className="site-layout-background" style={{ padding: 0, backgroundColor: 'purple', width: '100%', position: 'fixed', zIndex: 1 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logo} alt="Anvayaa Dementia" style={{ height: '50px', margin: '5px 10px 16px 0px' }} />
+            <h2 style={{ color: 'white', margin: 0, fontSize: '16px' }}>Anvayaa Dementia</h2>
+          </div>
+          <Button type="primary" onClick={() => setVisible(true)} style={{ marginRight: '10px', display: window.innerWidth <= 768 ? 'block' : 'none' }}>
+            ☰
+          </Button>
+        </div>
+        <Drawer
+          title="Menu"
+          placement="left"
+          closable={false}
+          onClose={() => setVisible(false)}
+          open={visible}
+          style={{ zIndex: 1 }}
+          width={250}
+        >
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['profile']}
+            style={{ borderRight: 0 }}
+            onClick={({ key }) => handleMenuItemClick(key)}
+          >
+            <Image src={profile} width={200} style={{ borderRadius: '50px', padding: '10px' }} />
+            <Menu.Item><Link to={''}>Rajasekhar Reddy</Link></Menu.Item>
+            {items2.map((item) => (
+              <Menu.Item key={item.key} style={{ background: calculateBackgroundColor(item.key), borderRadius: 0 }}>
+                <Link to={item.path}>{item.label}</Link>
+              </Menu.Item>
+            ))}
+          </Menu>
+        </Drawer>
       </Header>
-      <Content style={{ padding: '0 48px' }}>
-        <Layout style={{ padding: '24px 0', background: token.colorBgContainer, borderRadius: token.borderRadiusLG }}>
-          <Sider style={{ background: token.colorBgContainer }} width={200}>
-            <Menu mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              style={{ height: '100%' }}
-              items={items2.map((item:any) => ({
-                ...item,
-                onClick: () => handleMenuItemClick(item.key),
-              }))}
-            />
-          </Sider>
-            
- {/* <div id="container" style={{ padding: '10px', color: 'purple' }}>
-  <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span  style={{marginRight:'10rem'}}>PWD Name</span>
-      <Input placeholder="PWD Name" />
-    </Form.Item>
-
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span  style={{marginRight:'10rem'}}>Age</span>
-      <Input placeholder="Age" />
-    </Form.Item>
-
-   
-    <Form.Item style={{ marginBottom: '5px', color: 'purple' }}>
-    <span  style={{marginRight:'10rem'}}>Address</span>
-          <TextArea rows={4} />
-        </Form.Item>
-
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-      <Space direction="vertical" size={12}>
-        <span  style={{marginRight:'10rem'}}>Date of Birth</span>
-        <DatePicker
-          defaultValue={dayjs('01/01/2015', dateFormatList[0])}
-          format={dateFormatList}
-        />
-      </Space>
-    </Form.Item>
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span style={{marginRight:'10rem'}}>Occupation</span>
-      <Input placeholder="occupation" />
-    </Form.Item>
-    <Form.Item  label="Gender"style={{ marginBottom: '5px', color: 'purple',marginRight:'10rem' }}>
-         <Radio.Group>
-            <Radio value="Male"> Male </Radio>
-            <Radio value="Female"> Female </Radio>
-          </Radio.Group>
-    </Form.Item>
-  </Form>
-</div>  
-<div>
-<Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span style={{marginRight:'10rem'}}>Occupation</span>
-      <Input placeholder="occupation" />
-    </Form.Item>
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span style={{marginRight:'10rem'}}>Occupation</span>
-      <Input placeholder="occupation" />
-    </Form.Item>
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span style={{marginRight:'10rem'}}>Occupation</span>
-      <Input placeholder="occupation" />
-    </Form.Item>
-    <Form.Item  style={{ marginBottom: '5px', color: 'purple' }}>
-    <span style={{marginRight:'10rem'}}>Occupation</span>
-      <Input placeholder="occupation" />
-    </Form.Item>
-    <Form.Item label="Area">
-          <Select>
-            <Select.Option value="area">Area</Select.Option>
-          </Select>
-        </Form.Item>
-</div> */}
-
+      <Layout style={{ marginTop: 64 }}>
+        <Sider
+          width={200}
+          theme="dark"
+          style={{
+            background: token.colorBgContainer,
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+            top: 64,
+            transition: 'width 0.3s',
+            zIndex: 1,
+            display: window.innerWidth > 768 ? 'block' : 'none',
+          }}
+        >
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['profile']}
+            style={{ height: '100%', borderRight: 0 }}
+            onClick={({ key }) => handleMenuItemClick(key)}
+          >
+            <Image src={profile} width={200} style={{ borderRadius: '50px', padding: '10px' }} />
+            {items2.map((item) => (
+              <Menu.Item key={item.key} style={{ background: calculateBackgroundColor(item.key), borderRadius: 0 }}>
+                <Link to={item.path}>{item.label}</Link>
+              </Menu.Item>
+            ))}
+          </Menu>
+        </Sider>
+        <Layout style={{ marginLeft: window.innerWidth > 768 ? 200 : 0, transition: 'margin-left 0.3s', minHeight: '100%' }}>
+          <Content style={{ background: token.colorBgContainer, padding: '5px', overflowY: 'auto' }}>
+            <Outlet />
+          </Content>
         </Layout>
-        <main>{children}</main>
-      </Content>
+      </Layout>
     </Layout>
   );
 };
 
-export default DashBoard;
+export default LayoutModule;
