@@ -3,7 +3,6 @@ import { Layout, Menu, theme, Image, Drawer, Button } from 'antd';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import profile from '../../assets/profile.jpg';
 import logo from '../../assets/pwdlogo.png';
-import ActivityDetails from '../Activities/ActivityDetails/index.tsx';
 
 const { Header, Content, Sider } = Layout;
 
@@ -25,18 +24,18 @@ const items2 = [
   {
     key: 'activities',
     label: 'Activities',
-    path: '/layout/activities',
+    path: '/layout/activities/activitiesList',
   },
   {
     key: 'adding remainders',
     label: 'Adding Remainders',
   },
   {
-    key: 'view details',
+    key: 'viewDetails',
     label: 'View Details',
   },
   {
-    key: 'completed activites',
+    key: 'completedActivites',
     label: 'Completed Activites',
   },
   {
@@ -46,14 +45,10 @@ const items2 = [
   },
 ];
 
-interface SidebarProps {
-  children: ReactNode;
-}
-
-const LayoutModule: React.FC<SidebarProps> = ({ children }) => {
+const LayoutModule = ({ children }) => {
   const { token } = theme.useToken();
   const location = useLocation();
-  const [selectedKey, setSelectedKey] = useState<string>('profile');
+  const [selectedKey, setSelectedKey] = useState('profile');
   const [visible, setVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
 
@@ -71,15 +66,22 @@ const LayoutModule: React.FC<SidebarProps> = ({ children }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [isDesktop]);
+  
+  useEffect(() => {
+    const pathname = location.pathname;
+    const matchingKey = items2.find((item) => pathname.startsWith(item.path))?.key || 'profile';
+    console.log('matchingKey',matchingKey)
+    setSelectedKey(matchingKey);
+  }, [location.pathname]);
 
-  const handleMenuItemClick = (key: string) => {
+  const handleMenuItemClick = (key) => {
     setSelectedKey(key);
     if (!isDesktop) {
       setVisible(false);
     }
   };
 
-  const calculateBackgroundColor = (key: string) => {
+  const calculateBackgroundColor = (key) => {
     const percentage = key === selectedKey ? 5 : 0;
     return `linear-gradient(90deg, purple ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
   };

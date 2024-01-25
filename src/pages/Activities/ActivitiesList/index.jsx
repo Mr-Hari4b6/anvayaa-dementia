@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { List, Card } from 'antd';
-import { activitiesList } from '../../utils/activities.ts';
+import { activitiesList } from '../../../utils/activities';
 import './style.scss';
 import { Outlet, useNavigate } from 'react-router';
 
-const Activities = () => {
+const ActivitiesList = () => {
   const [activities, setActivities] = useState(activitiesList);
   const currentDate = new Date();
   const navigate = useNavigate();
@@ -38,8 +38,8 @@ const Activities = () => {
     return acc;
   }, {});
 
-  const handleActivity = (id) => {
-    navigate(`activity/${id}`);
+  const handleActivity = (id,data) => {
+    navigate(`/layout/activities/activity/${id}`,{state: data});
   };
 
   return (
@@ -60,7 +60,7 @@ const Activities = () => {
               dataSource={tasks}
               renderItem={(task) => (
                 <List.Item style={{ padding: 0 }}>
-                  <Card bordered={false} className="custom-card" onClick={() => handleActivity(task.id)}>
+                  <Card bordered={false} className="custom-card" onClick={() => handleActivity(task.id,task)}>
                     <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '20px', alignItems: 'center' }}>
                       <div className="date-container">
                         <span>{day}</span>
@@ -79,4 +79,4 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default ActivitiesList;
