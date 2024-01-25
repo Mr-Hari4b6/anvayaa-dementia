@@ -1,8 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Layout, Menu, theme, Image, Drawer, Button } from 'antd';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import profile from '../../assets/profile.jpg';
 import logo from '../../assets/pwdlogo.png';
+import ActivityDetails from '../Activities/ActivityDetails/index.tsx';
 
 const { Header, Content, Sider } = Layout;
 
@@ -51,6 +52,7 @@ interface SidebarProps {
 
 const LayoutModule: React.FC<SidebarProps> = ({ children }) => {
   const { token } = theme.useToken();
+  const location = useLocation();
   const [selectedKey, setSelectedKey] = useState<string>('profile');
   const [visible, setVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);

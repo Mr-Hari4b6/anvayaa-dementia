@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { List, Card } from 'antd';
+import { activitiesList } from '../../utils/activities.ts';
 import './style.scss';
-
-const mockActivities = [
-  { id: 1, title: 'Hospital Visit', date: '2024-01-25' },
-  { id: 2, title: 'Go For A Walk', date: '2024-01-25' },
-  { id: 3, title: 'Take Medicines', date: '2024-01-25' },
-  { id: 4, title: 'Visit A Friend', date: '2024-01-26' },
-  { id: 5, title: 'Do Exercise', date: '2024-01-26' },
-  { id: 6, title: 'Go To Physiotherapist', date: '2024-01-26' },
-  { id: 7, title: 'Go For A Walk', date: '2024-01-26' },
-  { id: 8, title: 'Attend A Family Gathering', date: '2024-01-26' },
-];
+import { Outlet, useNavigate } from 'react-router';
 
 const Activities = () => {
-  const [activities, setActivities] = useState(mockActivities);
+  const [activities, setActivities] = useState(activitiesList);
   const currentDate = new Date();
+  const navigate = useNavigate();
 
   const getMonthName = (monthNumber) => {
     const months = [
@@ -46,6 +38,10 @@ const Activities = () => {
     return acc;
   }, {});
 
+  const handleActivity = (id) => {
+    navigate(`activity/${id}`);
+  };
+
   return (
     <div>
       <div>
@@ -64,7 +60,7 @@ const Activities = () => {
               dataSource={tasks}
               renderItem={(task) => (
                 <List.Item style={{ padding: 0 }}>
-                  <Card bordered={false} className="custom-card">
+                  <Card bordered={false} className="custom-card" onClick={() => handleActivity(task.id)}>
                     <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '20px', alignItems: 'center' }}>
                       <div className="date-container">
                         <span>{day}</span>
