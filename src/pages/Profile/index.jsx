@@ -26,7 +26,7 @@ const formFields = [
   { label: 'Address', key: 'address', type: 'textarea' },
 ];
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const { token } = theme.useToken();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -44,7 +44,7 @@ const Profile: React.FC = () => {
     selectedLanguage: 'Telugu',
   });
 
-  const handleFieldChange = (fieldName: string, value: any) => {
+  const handleFieldChange = (fieldName, value) => {
     setProfileDetails((prevDetails) => ({
       ...prevDetails,
       [fieldName]: value,

@@ -1,5 +1,5 @@
-import { Button, Card, Image,List } from "antd";
 import React from "react";
+import { Button, Card, Image,List } from "antd";
 import { useLocation } from "react-router";
 
 const ActivityDetails = () => {

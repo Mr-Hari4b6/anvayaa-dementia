@@ -45,7 +45,7 @@ const items2 = [
   },
 ];
 
-const LayoutModule = ({ children }) => {
+const LayoutModule = () => {
   const { token } = theme.useToken();
   const location = useLocation();
   const [selectedKey, setSelectedKey] = useState('profile');
@@ -66,11 +66,11 @@ const LayoutModule = ({ children }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [isDesktop]);
-  
+
   useEffect(() => {
     const pathname = location.pathname;
     const matchingKey = items2.find((item) => pathname.startsWith(item.path))?.key || 'profile';
-    console.log('matchingKey',matchingKey)
+    console.log('matchingKey', matchingKey)
     setSelectedKey(matchingKey);
   }, [location.pathname]);
 

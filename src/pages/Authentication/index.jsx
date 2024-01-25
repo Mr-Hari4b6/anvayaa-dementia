@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import logo from '../../assets/pwdlogo.png';
 import './style.scss';
-import { useNavigate } from 'react-router';
 
 export const AuthenticationForm = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);

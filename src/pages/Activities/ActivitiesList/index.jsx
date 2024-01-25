@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { List, Card } from 'antd';
+import { useNavigate } from 'react-router';
 import { activitiesList } from '../../../utils/activities';
 import './style.scss';
-import { Outlet, useNavigate } from 'react-router';
 
 const ActivitiesList = () => {
   const [activities, setActivities] = useState(activitiesList);
