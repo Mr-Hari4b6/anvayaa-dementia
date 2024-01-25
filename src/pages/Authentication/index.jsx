@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import{Link} from 'react-router-dom'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -13,6 +14,7 @@ export const AuthenticationForm = () => {
     username: '',
     password: '',
   });
+  const [isRegisterClicked, setRegisterClicked] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,7 @@ export const AuthenticationForm = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    if (userDetails.username === '9550271250' && userDetails.password === '123456') {
+    if (userDetails.username === '6281984192' && userDetails.password === '123456') {
       localStorage.setItem('isLoggedIn', true);
       navigate('/layout/profile');
     }
@@ -38,6 +40,10 @@ export const AuthenticationForm = () => {
     setIsSignUpMode(false);
   };
 
+  const handleRegisterClick = () => {
+    navigate('/register');
+    setRegisterClicked(true);
+  };
   return (
     <div className={`loginContainer ${isSignUpMode ? 'sign-up-mode' : ''}`}>
       <div className="forms-container">
@@ -66,7 +72,13 @@ export const AuthenticationForm = () => {
               />
             </div>
             <div className="forgotPassword">
-              <div>Keep me logged in</div>
+            <Link
+          to="/register"
+          className={isRegisterClicked ? 'register-link-clicked' : 'register-link'}
+          onClick={handleRegisterClick}
+        >
+          Register
+        </Link>
               <div style={{ color: 'red' }}>Forgot password</div>
             </div>
             <button className="btn" onClick={handleSignIn}>

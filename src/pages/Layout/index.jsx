@@ -146,6 +146,7 @@ const LayoutModule = () => {
             onClick={({ key }) => handleMenuItemClick(key)}
           >
             <Image src={profile} width={200} style={{ borderRadius: '50px', padding: '10px' }} />
+            <Menu.Item><Link to={''}>Rajasekhar Reddy</Link></Menu.Item>
             {items2.map((item) => (
               <Menu.Item key={item.key} style={{ background: calculateBackgroundColor(item.key), borderRadius: 0 }}>
                 <Link to={item.path}>{item.label}</Link>

@@ -5,6 +5,8 @@ import ActivityDetails from './pages/Activities/ActivityDetails';
 import Activities from './pages/Activities';
 import ActivitiesList from './pages/Activities/ActivitiesList';
 import Profile from './pages/Profile';
+import { RegisterForm } from './pages/Register';
+
 import './App.css';
 
 function App() {
@@ -13,6 +15,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" Component={AuthenticationForm} />
+        <Route path="register" Component={RegisterForm} />
+       
+   
         <Route path="/layout" Component={LayoutModule} >
           <Route path='profile' element={<Profile />}></Route>
           <Route path='activities' element={<Activities />}>

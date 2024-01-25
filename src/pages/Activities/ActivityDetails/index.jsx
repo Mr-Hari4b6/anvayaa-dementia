@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, Image,List } from "antd";
 import { useLocation } from "react-router";
+import './style.scss';
 
 const ActivityDetails = () => {
   const activityDetails = useLocation();
@@ -27,8 +28,8 @@ const ActivityDetails = () => {
           dataSource={activityDetails.state.steps}
           renderItem={(task,index) => (
             <List.Item style={{ padding: 0 }}>
-              <Card bordered={false}>
-                <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start',width:'100%', padding:'10px',backgroundColor:'lightgoldenrodyellow',height:'80px' }}>
+              <Card bordered={false} className="steps-card">
+                <div className="steps-card">
                   <div style={{}}>
                     <h5 style={{color:'#a26fcb'}}>Step: {index + 1}</h5>
                     <p>{task}</p>
