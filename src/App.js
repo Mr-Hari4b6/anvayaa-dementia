@@ -1,50 +1,29 @@
-// import './App.css';
-// import { AuthenticationForm } from './pages/Authentication/index.tsx';
-// import Dashboard from './pages/Layout/index.tsx';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Dashboard></Dashboard>
-
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { AuthenticationForm } from './pages/Authentication';
+import LayoutModule from './pages/Layout';
+import ActivityDetails from './pages/Activities/ActivityDetails';
+import Activities from './pages/Activities';
+import ActivitiesList from './pages/Activities/ActivitiesList';
+import Profile from './pages/Profile';
 import './App.css';
-import Dashboard from './pages/Layout/index.tsx';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Profile from './pages/Profile/profile.tsx';
 
+function App() {
 
-
-
-function AppRouting() {
- 
- const navigation = useNavigate()
- 
-  
-    return (
-        <>
-        
-              
-
-                <Dashboard>
-                        <Routes>
-                            <Route path="/profile" element={<Profile/>}/>
-                        </Routes>
-                        </Dashboard >
-                       
-                   
-            
-           
- 
-        </>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={AuthenticationForm} />
+        <Route path="/layout" Component={LayoutModule} >
+          <Route path='profile' element={<Profile />}></Route>
+          <Route path='activities' element={<Activities />}>
+             <Route path='activitiesList' element={<ActivitiesList />}></Route>
+             <Route path='activity/:id' element={<ActivityDetails />}></Route>
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter >
+  );
 }
- 
-export default AppRouting;
- 
+
+export default App;
+
