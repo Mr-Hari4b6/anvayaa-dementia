@@ -11,7 +11,7 @@ const ActivityDetails = () => {
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: '5px' }}>
         <Button style={{ backgroundColor: 'yellow', fontWeight: 'bold' }}>Skip</Button>
         <Image src={activityDetails.state.mainImage} width={200} height={150} style={{ borderRadius: '50px', padding: '10px' }} />
-        <Button style={{ backgroundColor:'navy', fontWeight: 'bold', color: 'white' }}>Mark as completed</Button>
+        <Button style={{ backgroundColor:'#a26fcb', fontWeight: 'bold', color: 'white' }}>Mark as completed</Button>
       </div>
       <div>
         <Card bordered style={{ color: 'whitesmoke', border: '1px solid purple', borderRadius: '10px', padding: '10px', marginTop: '10px', backgroundColor: 'crimson' }}>
@@ -30,7 +30,7 @@ const ActivityDetails = () => {
               <Card bordered={false}>
                 <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start',width:'100%', padding:'10px',backgroundColor:'lightgoldenrodyellow',height:'80px' }}>
                   <div style={{}}>
-                    <h5 style={{color:'purple'}}>Setp: {index + 1}</h5>
+                    <h5 style={{color:'#a26fcb'}}>Step: {index + 1}</h5>
                     <p>{task}</p>
                   </div>
                   <div style={{ fontWeight: '600' }}>{task.title}</div>

@@ -83,12 +83,12 @@ const LayoutModule = () => {
 
   const calculateBackgroundColor = (key) => {
     const percentage = key === selectedKey ? 5 : 0;
-    return `linear-gradient(90deg, purple ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
+    return `linear-gradient(90deg, #a26fcb ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
   };
 
   return (
     <Layout style={{ minHeight: '100%' }}>
-      <Header className="site-layout-background" style={{ padding: 0, backgroundColor: 'purple', width: '100%', position: 'fixed', zIndex: 1 }}>
+      <Header className="site-layout-background" style={{ padding: 0, backgroundColor: '#a26fcb', width: '100%', position: 'fixed', zIndex: 1 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={logo} alt="Anvayaa Dementia" style={{ height: '50px', margin: '5px 10px 16px 0px' }} />

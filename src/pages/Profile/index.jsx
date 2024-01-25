@@ -61,13 +61,13 @@ const Profile = () => {
   };
 
   return (
-    <Content style={{ width: '100%' }}>
+    <Content style={{ width: '100%' ,backgroundColor:'#F5F5F5'}}>
       <div style={{ padding: '10px', background: token.colorBgContainer, width: '100%' }}>
         <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ color: 'purple', fontSize: '22px', marginBottom: '16px' }}><span style={{color:'black'}}>Welcome</span> Mr.{profileDetails.pwdName}</h1>
+          <h1 style={{ color: ' #9c58d4', fontSize: '22px', marginBottom: '16px' }}><span style={{color:'black'}}>Welcome</span> Mr.{profileDetails.pwdName}</h1>
           {isEditing && (
             <Button type="text" danger style={{ float: 'right', fontWeight: '500' }} icon={<SaveOutlined />} onClick={handleSave}>Save & Next</Button>)}
-          {!isEditing && (<Button type="text" style={{ color: 'purple', fontWeight: '500' }} icon={<EditOutlined />} onClick={handleEdit}>Edit</Button>)}
+          {!isEditing && (<Button type="text" style={{ color: '#a26fcb', fontWeight: '500' }} icon={<EditOutlined />} onClick={handleEdit}>Edit</Button>)}
         </div>
         <Row gutter={[8, 0]}>
           {formFields.map((field) => (

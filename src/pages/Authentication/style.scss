@@ -142,7 +142,7 @@ body,
 
 .btn {
     width: 200px;
-    background-color: purple;
+    background-color: #a26fcb;
     border: none;
     outline: none;
     height: 45px;
@@ -177,7 +177,7 @@ body,
     top: -10%;
     right: 50%;
     transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, purple 0%, purple 100%);
+    background-image: linear-gradient(-45deg,   #a26fcb 0%,   #a26fcb 100%);
     transition: 1.8s ease-in-out;
     // border-radius: 50%;
     z-index: 6;
@@ -209,7 +209,7 @@ body,
 }
 
 .panel .content {
-    color: #fff;
+    color: #DEDEDE;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
 }
@@ -219,6 +219,7 @@ body,
     line-height: 1;
     font-size: 1.5rem;
 }
+
 
 .panel .loginp {
     font-size: 0.95rem;
