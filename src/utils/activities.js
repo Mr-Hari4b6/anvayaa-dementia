@@ -1,3 +1,10 @@
+
+import walk from '../assets/walk.jpg';
+import medicine from '../assets/medicine.jpg';
+import hospitalVisit from '../assets/hospital.jpg';
+import excercise from '../assets/excercise.jpg';
+import physiotherepist from '../assets/physiotherepist.jpg';
+
 export const activitiesList = [
     {
       "id": "act1",
@@ -34,13 +41,13 @@ export const activitiesList = [
       ],
       "description": "Take a refreshing walk to enhance cardiovascular health and enjoy the surrounding scenery.",
       "duration": "20 minutes",
-      "mainImage": "https://example.com/walk-main-image.jpg",
+      "mainImage": walk,
       "stepImages": [
-        "https://example.com/walk-step-image-1.jpg",
-        "https://example.com/walk-step-image-2.jpg",
-        "https://example.com/walk-step-image-3.jpg",
-        "https://example.com/walk-step-image-4.jpg",
-        "https://example.com/walk-step-image-5.jpg"
+        walk,
+        walk,
+        walk,
+        walk,
+        walk
       ]
     },
     {
@@ -56,13 +63,13 @@ export const activitiesList = [
       ],
       "description": "Adhere to prescribed medication for maintaining health and managing medical conditions.",
       "duration": "10 minutes",
-      "mainImage": "https://example.com/medicines-main-image.jpg",
+      "mainImage": medicine,
       "stepImages": [
-        "https://example.com/medicines-step-image-1.jpg",
-        "https://example.com/medicines-step-image-2.jpg",
-        "https://example.com/medicines-step-image-3.jpg",
-        "https://example.com/medicines-step-image-4.jpg",
-        "https://example.com/medicines-step-image-5.jpg"
+        medicine,
+        medicine,
+        medicine,
+        medicine,
+        medicine
       ]
     },
     {
@@ -78,13 +85,13 @@ export const activitiesList = [
       ],
       "description": "Ensure a smooth hospital visit by preparing necessary documents and following medical advice.",
       "duration": "1 hour",
-      "mainImage": "https://example.com/hospital-visit-main-image.jpg",
+      "mainImage": hospitalVisit,
       "stepImages": [
-        "https://example.com/hospital-visit-step-image-1.jpg",
-        "https://example.com/hospital-visit-step-image-2.jpg",
-        "https://example.com/hospital-visit-step-image-3.jpg",
-        "https://example.com/hospital-visit-step-image-4.jpg",
-        "https://example.com/hospital-visit-step-image-5.jpg"
+        hospitalVisit,
+        hospitalVisit,
+        hospitalVisit,
+        hospitalVisit,
+        hospitalVisit
       ]
     },
     {
@@ -100,13 +107,13 @@ export const activitiesList = [
       ],
       "description": "Engage in a comprehensive exercise routine to enhance overall fitness and well-being.",
       "duration": "45 minutes",
-      "mainImage": "https://example.com/exercise-main-image.jpg",
+      "mainImage": excercise,
       "stepImages": [
-        "https://example.com/exercise-step-image-1.jpg",
-        "https://example.com/exercise-step-image-2.jpg",
-        "https://example.com/exercise-step-image-3.jpg",
-        "https://example.com/exercise-step-image-4.jpg",
-        "https://example.com/exercise-step-image-5.jpg"
+        excercise,
+        excercise,
+        excercise,
+        excercise,
+        excercise
       ]
     },
     {
@@ -122,13 +129,13 @@ export const activitiesList = [
       ],
       "description": "Receive professional physiotherapy for targeted care and rehabilitation.",
       "duration": "1 hour",
-      "mainImage": "https://example.com/physiotherapy-main-image.jpg",
+      "mainImage": physiotherepist,
       "stepImages": [
-        "https://example.com/physiotherapy-step-image-1.jpg",
-        "https://example.com/physiotherapy-step-image-2.jpg",
-        "https://example.com/physiotherapy-step-image-3.jpg",
-        "https://example.com/physiotherapy-step-image-4.jpg",
-        "https://example.com/physiotherapy-step-image-5.jpg"
+        physiotherepist,
+        physiotherepist,
+        physiotherepist,
+        physiotherepist,
+        physiotherepist
       ]
     },
     {
@@ -144,13 +151,13 @@ export const activitiesList = [
       ],
       "description": "Take another refreshing walk to maintain an active lifestyle and enjoy nature.",
       "duration": "20 minutes",
-      "mainImage": "https://example.com/walk2-main-image.jpg",
+      "mainImage": walk,
       "stepImages": [
-        "https://example.com/walk2-step-image-1.jpg",
-        "https://example.com/walk2-step-image-2.jpg",
-        "https://example.com/walk2-step-image-3.jpg",
-        "https://example.com/walk2-step-image-4.jpg",
-        "https://example.com/walk2-step-image-5.jpg"
+        walk,
+        walk,
+        walk,
+        walk,
+        walk
       ]
     },
     {
