@@ -8,6 +8,8 @@ import Profile from './pages/Profile';
 import { RegisterForm } from './pages/Authentication/Register';
 
 import './App.css';
+import Remainders from './pages/Remainders';
+
 
 const ProtectedRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -26,6 +28,7 @@ function App() {
           element={<ProtectedRoute element={<LayoutModule />} />}
         >
           <Route path='profile' element={<Profile />}></Route>
+          <Route path='remainders' element={<Remainders />}></Route>
           <Route path='activities' element={<Activities />}>
             <Route path='activitiesList' element={<ActivitiesList />}></Route>
             <Route path='activity/:id' element={<ActivityDetails />}></Route>

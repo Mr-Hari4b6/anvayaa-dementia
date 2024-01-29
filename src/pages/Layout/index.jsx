@@ -34,6 +34,7 @@ const menuItems = [
   {
     key: 'adding remainders',
     label: 'Adding Remainders',
+    path:'/layout/remainders'
   },
   {
     key: 'viewDetails',
@@ -116,7 +117,7 @@ const LayoutModule = () => {
             <h2 style={{ color: 'white', margin: 0, fontSize: '16px' }}>Anvayaa Dementia</h2>
           </div>
           <div style={{ color: 'white', fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
-            {JSON.parse(localStorage.getItem('user')).username}
+            {JSON.parse(localStorage.getItem('user'))?.username}
             <Dropdown overlay={avatarMenu} trigger={['click']}>
               <Avatar size={44} icon={<UserOutlined />}/>
             </Dropdown>

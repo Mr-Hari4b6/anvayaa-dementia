@@ -1,0 +1,74 @@
+.card-content {
+  height: 100px;   // Adjust the height as needed
+  width: calc(100% - 10px); // Adjust the width as needed and consider margin-left
+  margin-bottom: 8px; // Reduced margin between cards
+  margin-left: 10px;
+  background-color: #F1F1F1;
+}
+.card-image {
+  max-width: 80%;
+}
+.card-text {
+  padding: 8px;
+}
+.empty-card {
+  height: 70px; // Adjust the height of empty cards
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666; // Customize the text color of empty cards
+  margin-left: 40px;
+  font-size: 12px;
+  margin-Top:-110px;
+  color:#7530AC;
+ font-style:bold;
+ font-weight: bold;
+}
+.ant-row {
+  margin-bottom: 0; // Remove margin between rows
+}
+.card-header {
+  display: flex;
+  align-items: center;
+}
+.bell-image {
+  width: 8%; 
+  height: 7%; 
+  margin-left: 13.5rem;
+ 
+}
+.image{
+  width: 10%; 
+  height: 9%; 
+  margin-Right: 10rem;
+  margin-top: 4px;
+  margin-left: 3px;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  // border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 45rem;
+  }
+.customDatePicker {
+  position: relative;
+  top: -32px; 
+  margin-left: 30px;
+}
+.Select-date {
+  color: #676767;
+  margin-top: -15px;
+  margin-left: 35px;
+  font-size: 12px;
+}
+.date-picker-image{
+  width: 8%; 
+  height: 7%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+// responsive //
