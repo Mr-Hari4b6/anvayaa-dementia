@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Menu, theme, Image, Drawer, Button, Avatar, Dropdown } from 'antd';
 import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';

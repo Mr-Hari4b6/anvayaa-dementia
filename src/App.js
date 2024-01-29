@@ -1,4 +1,5 @@
-import { Routes, Route, BrowserRouter,Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { LoginForm } from './pages/Authentication/Login';
 import LayoutModule from './pages/Layout';
 import ActivityDetails from './pages/Activities/ActivityDetails';
@@ -6,17 +7,25 @@ import Activities from './pages/Activities';
 import ActivitiesList from './pages/Activities/ActivitiesList';
 import Profile from './pages/Profile';
 import { RegisterForm } from './pages/Authentication/Register';
+import dementiaActivities from './utils/dementiaActivities';
 
 import './App.css';
 import Remainders from './pages/Remainders';
+import { userDetails } from './utils/activities';
 
 
 const ProtectedRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   return isLoggedIn ? element : <Navigate to="/" replace />;
 };
+
 function App() {
 
+  useEffect(() => {
+    localStorage.setItem('dementiaActivities', JSON.stringify(dementiaActivities));
+
+  }, [dementiaActivities]);
+  
   return (
     <BrowserRouter>
       <Routes>
