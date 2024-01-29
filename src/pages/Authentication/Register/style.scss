@@ -9,7 +9,7 @@ body,
     font-family: "Poppins", sans-serif;
 }
 
-.loginContainer {
+.registerContainer {
     position: relative;
     width: 100%;
     background-color: #fff;
@@ -120,9 +120,25 @@ body,
     justify-content: space-between;
 }
 
+.social-icon {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: #333;
+    border-radius: 50%;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
 
-
-
+.social-icon:hover {
+    color: #4481eb;
+    border-color: #4481eb;
+}
 
 .btn {
     width: 200px;
@@ -153,7 +169,7 @@ body,
     grid-template-columns: repeat(2, 1fr);
 }
 
-.loginContainer:before {
+.registerContainer:before {
     content: "";
     position: absolute;
     height: 2000px;
@@ -221,63 +237,52 @@ body,
     font-size: 0.8rem;
 }
 
-.forgotPassword {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
 
-.right-panel .image,
-.right-panel .content {
-    transform: translateX(800px);
-}
 
 /* ANIMATION */
 
-.loginContainer.sign-up-mode:before {
+.registerContainer.sign-up-mode:before {
     transform: translate(100%, -50%);
     right: 52%;
 }
 
-.loginContainer.sign-up-mode .left-panel .image,
-.loginContainer.sign-up-mode .left-panel .content {
+.registerContainer.sign-up-mode .left-panel .image,
+.registerContainer.sign-up-mode .left-panel .content {
     transform: translateX(-800px);
 }
 
-.loginContainer.sign-up-mode .signin-signup {
+.registerContainer.sign-up-mode .signin-signup {
     left: 25%;
 }
 
-.loginContainer.sign-up-mode .loginForm.sign-up-form {
+.registerContainer.sign-up-mode .loginForm.sign-up-form {
     opacity: 1;
     z-index: 2;
 }
 
-.loginContainer.sign-up-mode .loginForm.sign-in-form {
+.registerContainer.sign-up-mode .loginForm.sign-in-form {
     opacity: 0;
     z-index: 1;
 }
 
-.loginContainer.sign-up-mode .right-panel .image,
-.loginContainer.sign-up-mode .right-panel .content {
+.registerContainer.sign-up-mode .right-panel .image,
+.registerContainer.sign-up-mode .right-panel .content {
     transform: translateX(0%);
 }
 
-.loginContainer.sign-up-mode .left-panel {
+.registerContainer.sign-up-mode .left-panel {
     pointer-events: none;
 }
 
-.loginContainer.sign-up-mode .right-panel {
+.registerContainer.sign-up-mode .right-panel {
     pointer-events: all;
 }
 
 @media (max-width: 870px) {
-    .loginContainer {
-        min-height: 800px;
+    .registerContainer {
+        min-height: 950px;
         height: 100vh;
     }
-
     .signin-signup {
         width: 100%;
         top: 100%;
@@ -286,7 +291,7 @@ body,
     }
 
     .signin-signup,
-    .loginContainer.sign-up-mode .signin-signup {
+    .registerContainer.sign-up-mode .signin-signup {
         left: 50%;
     }
 
@@ -344,7 +349,7 @@ body,
         font-size: 0.7rem;
     }
 
-    .loginContainer:before {
+    .registerContainer:before {
         width: 1500px;
         height: 1500px;
         transform: translateX(-50%);
@@ -355,19 +360,19 @@ body,
         transition: 2s ease-in-out;
     }
 
-    .loginContainer.sign-up-mode:before {
+    .registerContainer.sign-up-mode:before {
         transform: translate(-50%, 100%);
         bottom: 32%;
         right: initial;
     }
 
-    .loginContainer.sign-up-mode .left-panel .image,
-    .loginContainer.sign-up-mode .left-panel .content {
+    .registerContainer.sign-up-mode .left-panel .image,
+    .registerContainer.sign-up-mode .left-panel .content {
         transform: translateY(-300px);
     }
 
-    .loginContainer.sign-up-mode .right-panel .image,
-    .loginContainer.sign-up-mode .right-panel .content {
+    .registerContainer.sign-up-mode .right-panel .image,
+    .registerContainer.sign-up-mode .right-panel .content {
         transform: translateY(0px);
     }
 
@@ -376,13 +381,14 @@ body,
         transform: translateY(300px);
     }
 
-    .loginContainer.sign-up-mode .signin-signup {
+    .registerContainer.sign-up-mode .signin-signup {
         top: 5%;
         transform: translate(-50%, 0);
     }
 }
 
 @media (max-width: 570px) {
+  
     .loginForm {
         padding: 0 1.5rem;
     }
@@ -393,16 +399,16 @@ body,
         padding: 0.5rem 1rem;
     }
 
-    .loginContainer {
+    .registerContainer {
         padding: 1.5rem;
     }
 
-    .loginContainer:before {
+    .registerContainer:before {
         bottom: 62%;
         left: 50%;
     }
 
-    .loginContainer.sign-up-mode:before {
+    .registerContainer.sign-up-mode:before {
         bottom: 28%;
         left: 50%;
     }

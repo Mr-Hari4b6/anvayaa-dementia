@@ -5,17 +5,16 @@ import './style.scss';
 
 const ActivityDetails = () => {
   const activityDetails = useLocation();
-  console.log('activityDetails', activityDetails)
   return (
     <div>
       <h2>Activity Details</h2>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: '5px' }}>
-        <Button style={{ backgroundColor: 'yellow', fontWeight: 'bold' }}>Skip</Button>
-        <Image src={activityDetails.state.mainImage} width={200} height={150} style={{ borderRadius: '50px', padding: '10px' }} />
-        <Button style={{ backgroundColor:'#a26fcb', fontWeight: 'bold', color: 'white' }}>Mark as completed</Button>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', padding: '5px' }}>
+        <Button style={{ backgroundColor: 'yellow' }}>Skip</Button>
+        <Image className="activity-image" src={activityDetails.state.mainImage} width={200} height={150} preview={false} />
+        <Button style={{ backgroundColor:'navy', color: 'white' }}>Mark as completed</Button>
       </div>
       <div>
-        <Card bordered style={{ color: 'whitesmoke', border: '1px solid purple', borderRadius: '10px', padding: '10px', marginTop: '10px', backgroundColor: 'crimson' }}>
+        <Card  className="activity-description" bordered>
           <h3>{activityDetails.state.title}</h3>
           <h5>{activityDetails.state.description}</h5>
 

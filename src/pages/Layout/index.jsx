@@ -1,12 +1,17 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { Layout, Menu, theme, Image, Drawer, Button } from 'antd';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Layout, Menu, theme, Image, Drawer, Button, Avatar, Dropdown } from 'antd';
+import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserOutlined } from '@ant-design/icons';
+import { EditProfileModal } from '../../components/EditProfileModal';
 import profile from '../../assets/profile.jpg';
 import logo from '../../assets/pwdlogo.png';
+import './style.scss';
 
 const { Header, Content, Sider } = Layout;
 
-const items2 = [
+
+const menuItems = [
   {
     key: 'profile',
     label: 'Profile',
@@ -37,18 +42,15 @@ const items2 = [
   {
     key: 'completedActivites',
     label: 'Completed Activites',
-  },
-  {
-    key: 'logout',
-    label: 'Logout',
-    path: '/',
-  },
+  }
 ];
 
 const LayoutModule = () => {
   const { token } = theme.useToken();
   const location = useLocation();
+  const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState('profile');
+  const [modalVisible, setModalVisible] = useState(false);
   const [visible, setVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
 
@@ -69,12 +71,12 @@ const LayoutModule = () => {
 
   useEffect(() => {
     const pathname = location.pathname;
-    const matchingKey = items2.find((item) => pathname.startsWith(item.path))?.key || 'profile';
+    const matchingKey = menuItems.find((item) => pathname.startsWith(item.path))?.key || 'profile';
     console.log('matchingKey', matchingKey)
     setSelectedKey(matchingKey);
   }, [location.pathname]);
 
-  const handleMenuItemClick = (key) => {
+  const handleSideMenuClick = (key) => {
     setSelectedKey(key);
     if (!isDesktop) {
       setVisible(false);
@@ -85,14 +87,39 @@ const LayoutModule = () => {
     const percentage = key === selectedKey ? 5 : 0;
     return `linear-gradient(90deg, #a26fcb ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
   };
+  const handleHeaderMenuClick = ({ key }) => {
+    if (key === 'editProfile') {
+      setModalVisible(true);
+    } else if (key === 'logout') {
+      localStorage.setItem('isLoggedIn', false);
+      navigate('/');
+    }
+  };
+
+  const avatarMenu = (
+    <Menu onClick={handleHeaderMenuClick}>
+      <Menu.Item key="editProfile" icon={<EditOutlined /> }>
+        Edit Profile
+      </Menu.Item>
+      <Menu.Item key="logout" icon={<LogoutOutlined />}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <Layout style={{ minHeight: '100%' }}>
-      <Header className="site-layout-background" style={{ padding: 0, backgroundColor: '#a26fcb', width: '100%', position: 'fixed', zIndex: 1 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px' }}>
+      <Header className="site-layout-background">
+        <div className="header-main">
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={logo} alt="Anvayaa Dementia" style={{ height: '50px', margin: '5px 10px 16px 0px' }} />
             <h2 style={{ color: 'white', margin: 0, fontSize: '16px' }}>Anvayaa Dementia</h2>
+          </div>
+          <div style={{ color: 'white', fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
+            {JSON.parse(localStorage.getItem('user')).username}
+            <Dropdown overlay={avatarMenu} trigger={['click']}>
+              <Avatar size={44} icon={<UserOutlined />}/>
+            </Dropdown>
           </div>
           <Button type="primary" onClick={() => setVisible(true)} style={{ marginRight: '10px', display: window.innerWidth <= 768 ? 'block' : 'none' }}>
             ☰
@@ -111,11 +138,10 @@ const LayoutModule = () => {
             mode="inline"
             defaultSelectedKeys={['profile']}
             style={{ borderRight: 0 }}
-            onClick={({ key }) => handleMenuItemClick(key)}
+            onClick={({ key }) => handleSideMenuClick(key)}
           >
             <Image src={profile} width={200} style={{ borderRadius: '50px', padding: '10px' }} />
-            <Menu.Item><Link to={''}>Rajasekhar Reddy</Link></Menu.Item>
-            {items2.map((item) => (
+            {menuItems.map((item) => (
               <Menu.Item key={item.key} style={{ background: calculateBackgroundColor(item.key), borderRadius: 0 }}>
                 <Link to={item.path}>{item.label}</Link>
               </Menu.Item>
@@ -143,11 +169,10 @@ const LayoutModule = () => {
             mode="inline"
             defaultSelectedKeys={['profile']}
             style={{ height: '100%', borderRight: 0 }}
-            onClick={({ key }) => handleMenuItemClick(key)}
+            onClick={({ key }) => handleSideMenuClick(key)}
           >
             <Image src={profile} width={200} style={{ borderRadius: '50px', padding: '10px' }} />
-            <Menu.Item><Link to={''}>Rajasekhar Reddy</Link></Menu.Item>
-            {items2.map((item) => (
+            {menuItems.map((item) => (
               <Menu.Item key={item.key} style={{ background: calculateBackgroundColor(item.key), borderRadius: 0 }}>
                 <Link to={item.path}>{item.label}</Link>
               </Menu.Item>
@@ -160,6 +185,7 @@ const LayoutModule = () => {
           </Content>
         </Layout>
       </Layout>
+      <EditProfileModal visible={modalVisible} setVisible={setModalVisible} />
     </Layout>
   );
 };

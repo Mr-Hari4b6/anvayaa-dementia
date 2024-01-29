@@ -48,7 +48,7 @@ body,
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0rem 5rem;
+    padding: 0rem 2rem;
     transition: all 0.2s 0.7s;
     overflow: hidden;
     grid-column: 1 / 2;
@@ -96,7 +96,7 @@ body,
     border: none;
     line-height: 1;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #333;
 }
 
@@ -120,25 +120,9 @@ body,
     justify-content: space-between;
 }
 
-.social-icon {
-    height: 46px;
-    width: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0.45rem;
-    color: #333;
-    border-radius: 50%;
-    border: 1px solid #333;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: 0.3s;
-}
 
-.social-icon:hover {
-    color: #4481eb;
-    border-color: #4481eb;
-}
+
+
 
 .btn {
     width: 200px;
@@ -237,7 +221,17 @@ body,
     font-size: 0.8rem;
 }
 
+.forgotPassword {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 
+.right-panel .image,
+.right-panel .content {
+    transform: translateX(800px);
+}
 
 /* ANIMATION */
 
@@ -280,7 +274,7 @@ body,
 
 @media (max-width: 870px) {
     .loginContainer {
-        min-height: 800px;
+        min-height: 900px;
         height: 100vh;
     }
 

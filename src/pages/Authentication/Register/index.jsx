@@ -2,57 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser  , faLock, faEnvelope,faMobile} from '@fortawesome/free-solid-svg-icons';
+import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-import logo from '../../assets/pwdlogo.png';
+import logo from '../../../assets/pwdlogo.png';
 import './style.scss';
+import useRegistrationForm from '../../../utils/useRegistrationForm';
 
 export const RegisterForm = () => {
-  const [isSignUpMode, setIsSignUpMode] = useState(false);
-  const navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState({
-    username: '', 
-    Mobilenumber:'',
-    Email:'',
-    newpassword: '',
-    confrimpassword:'',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserDetails((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    if (userDetails.newpassword !== userDetails.confirmpassword) {
-        alert("New password and confirm password not matched");
-        return;
-      }
-   
-      navigate('/Layout/Profile');
-    
-  };
-
-  const handleSignUpClick = () => {
-    setIsSignUpMode(true);
-  };
-
-  const handleSignInClick = () => {
-    setIsSignUpMode(false);
-  };
+  const { handleChange, handleSignUp } = useRegistrationForm();
 
   return (
-    <div className={`loginContainer ${isSignUpMode ? 'sign-up-mode' : ''}`}>
+    <div className={"registerContainer"}>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form loginForm">
-            <h2 className="title">Register</h2>
+            <h2 className="title">Sign Up</h2>
 
             <div className="input-field">
-              <FontAwesomeIcon icon={faUser} className="fa fa-user" />
+              <FontAwesomeIcon icon={faUser} className="fa fa-user icon" />
               <input
                 className="LoginInput"
                 name="username"
@@ -62,7 +29,7 @@ export const RegisterForm = () => {
               />
             </div>
             <div className="input-field">
-              <FontAwesomeIcon icon={faMobile} className="fa fa-mobile" />
+              <FontAwesomeIcon icon={faMobile} className="fa fa-mobile icon" />
               <input
                 className="LoginInput"
                 name="mobilenumber"
@@ -75,8 +42,8 @@ export const RegisterForm = () => {
               <FontAwesomeIcon icon={faEnvelope} className="my-auto mx-auto icon" />
               <input
                 className="LoginInput"
-                name="Email"
-                type="text"
+                name="email"
+                type="email"
                 onChange={(e) => handleChange(e)}
                 placeholder="Enter Email"
               />
@@ -102,9 +69,18 @@ export const RegisterForm = () => {
               />
             </div>
            
-            <button className="btn" onClick={handleSignIn}>
+            <button className="btn" onClick={handleSignUp}>
              Register
             </button>
+            <p className="social-text loginp">Sign in with social platforms</p>
+            <div className="social-media">
+              <a href="#" className="social-icon">
+                <FontAwesomeIcon icon={faGoogle} className="my-auto mx-auto" />
+              </a>
+              <a href="#" className="social-icon">
+                <FontAwesomeIcon icon={faLinkedinIn} className="my-auto mx-auto" />
+              </a>
+            </div>
           </form>
          
         </div>
@@ -115,13 +91,6 @@ export const RegisterForm = () => {
             <h3 className="loginh3" style={{ color: 'crimson' }}>
               ElderEase
             </h3>
-            <p className="loginp">'Never too early, never too late'</p>
-          </div>
-          <img src={logo} className="image" alt="" />
-        </div>
-        <div className="panel right-panel">
-          <div className="content">
-            <h3 className="loginh3">ElderEase</h3>
             <p className="loginp">'Never too early, never too late'</p>
           </div>
           <img src={logo} className="image" alt="" />
