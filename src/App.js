@@ -12,6 +12,7 @@ import dementiaActivities from './utils/dementiaActivities';
 import './App.css';
 import Remainders from './pages/Remainders';
 import { userDetails } from './utils/activities';
+import Feedback from './pages/Rating';
 
 
 const ProtectedRoute = ({ element }) => {
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route index path="" Component={LoginForm} />
         <Route path="register" Component={RegisterForm} />
+        <Route path="feedback" Component={Feedback} />
 
 
         <Route path="/layout"
