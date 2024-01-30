@@ -174,12 +174,13 @@ body,
     position: absolute;
     height: 2000px;
     width: 2000px;
-    top: -10%;
+    top: -25%;
     right: 50%;
     transform: translateY(-50%);
-    background-image: linear-gradient(-45deg,   #a26fcb 0%,   #a26fcb 100%);
+    transform: translateY(-30%);
+    background-image: linear-gradient(-45deg, #a26fcb 0%, #a26fcb 50%);
     transition: 1.8s ease-in-out;
-    // border-radius: 50%;
+    border-radius: 50%;
     z-index: 6;
 }
 
@@ -196,6 +197,11 @@ body,
     justify-content: space-around;
     text-align: center;
     z-index: 6;
+}
+
+.right-panel .image,
+.right-panel .content {
+    transform: translateX(800px);
 }
 
 .left-panel {
@@ -283,6 +289,7 @@ body,
         min-height: 950px;
         height: 100vh;
     }
+
     .signin-signup {
         width: 100%;
         top: 100%;
@@ -353,8 +360,8 @@ body,
         width: 1500px;
         height: 1500px;
         transform: translateX(-50%);
-        left: 30%;
-        bottom: 68%;
+        left: 50%;
+        bottom: 65%;
         right: initial;
         top: initial;
         transition: 2s ease-in-out;
@@ -388,10 +395,11 @@ body,
 }
 
 @media (max-width: 570px) {
-  
+
     .loginForm {
         padding: 0 1.5rem;
     }
+
     .panel .content {
         padding: 0.5rem 1rem;
     }

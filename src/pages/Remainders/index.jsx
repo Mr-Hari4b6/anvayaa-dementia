@@ -85,7 +85,7 @@ const Remainders = () => {
             <Col key={index} xs={24} sm={12} md={6}>
               <Card className="card-content">
                 <div className="header-details">
-                  <img alt={activity.title} src={runaway} className="image" />
+                  <img alt={activity.title} src={runaway} className="logos" />
                   <h4 className="activity-name">{activity.title}</h4>
                   <div className="activity-info">
                     <img alt={activity.title} src={bellring} className="bell-image" />
@@ -121,7 +121,7 @@ const Remainders = () => {
             <Col key={index} xs={24} sm={12} md={6}>
               <Card className="card-content">
                 <div className="header-details">
-                  <img alt={activity.title} src={runaway} className="image" />
+                  <img alt={activity.title} src={runaway} className="logos" />
                   <h4 className="activity-name">{activity.title}</h4>
                   <div className="activity-info">
                     <img alt={activity.title} src={bellring} className="bell-image" />
