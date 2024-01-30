@@ -57,7 +57,7 @@ const ActivityDetails = () => {
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', padding: '5px' }}>
         <Button style={{ backgroundColor: 'yellow' }} onClick={handleSkip}>Skip</Button>
         <Image className="activity-image" src={activityDetails.state.mainImage} width={200} height={150} preview={false} />
-        <Button style={{ backgroundColor: 'navy', color: 'white' }} onClick={handleMarkAsCompleted}>Mark as completed</Button>
+        <Button style={{ backgroundColor: '#8c61af', color: 'white' }} onClick={handleMarkAsCompleted}>Mark as completed</Button>
       </div>
       <div>
         <Card className="activity-description" bordered>
@@ -76,7 +76,7 @@ const ActivityDetails = () => {
               <Card bordered={false} className="steps-card">
                 <div className="steps-card">
                   <div style={{}}>
-                    <h5 style={{ color: '#a26fcb' }}>Step: {index + 1}</h5>
+                    <h5 style={{ color: 'white' }}>Step: {index + 1}</h5>
                     <p>{task}</p>
                   </div>
                   <div style={{ fontWeight: '600' }}>{task.title}</div>

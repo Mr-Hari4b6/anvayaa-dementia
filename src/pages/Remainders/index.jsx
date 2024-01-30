@@ -5,6 +5,7 @@ import calender from '../../assets/calender.png';
 import bellring from '../../assets/bellring.png';
 import runaway from '../../assets/runaway.png';
 import addlogo from '../../assets/addicon.jpg';
+import plus from '../../assets/plus.png';
 
 const { Search } = Input;
 
@@ -102,7 +103,7 @@ const Remainders = () => {
                 <Tooltip title="Add" placement="bottom">
                   <img
                     alt="Add"
-                    src={addlogo}
+                    src={plus}
                     width={30}
                     height={30}
                     className="add-icon"
