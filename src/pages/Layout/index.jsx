@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Menu, theme, Image, Drawer, Button, Avatar, Dropdown } from 'antd';
+import { Layout, Menu, theme, Image, Drawer, Button, Avatar, Dropdown, Divider } from 'antd';
 import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
@@ -15,12 +15,7 @@ const menuItems = [
   {
     key: 'profile',
     label: 'Profile',
-    path: '/layout/profile',
-  },
-  {
-    key: 'password',
-    label: 'Password',
-    path: '/layout/password',
+    path: '/layout/profile/profileDetails',
   },
   {
     key: 'assessments',
@@ -34,11 +29,7 @@ const menuItems = [
   {
     key: 'adding remainders',
     label: 'Adding Remainders',
-    path:'/layout/remainders'
-  },
-  {
-    key: 'viewDetails',
-    label: 'View Details',
+    path: '/layout/remainders'
   },
   {
     key: 'completedActivites',
@@ -73,7 +64,6 @@ const LayoutModule = () => {
   useEffect(() => {
     const pathname = location.pathname;
     const matchingKey = menuItems.find((item) => pathname.startsWith(item.path))?.key || 'profile';
-    console.log('matchingKey', matchingKey)
     setSelectedKey(matchingKey);
   }, [location.pathname]);
 
@@ -88,6 +78,7 @@ const LayoutModule = () => {
     const percentage = key === selectedKey ? 5 : 0;
     return `linear-gradient(90deg, #a26fcb ${percentage}%, ${token.colorBgContainer} ${percentage}%)`;
   };
+
   const handleHeaderMenuClick = ({ key }) => {
     if (key === 'editProfile') {
       setModalVisible(true);
@@ -99,7 +90,7 @@ const LayoutModule = () => {
 
   const avatarMenu = (
     <Menu onClick={handleHeaderMenuClick}>
-      <Menu.Item key="editProfile" icon={<EditOutlined /> }>
+      <Menu.Item key="editProfile" icon={<EditOutlined />}>
         Edit Profile
       </Menu.Item>
       <Menu.Item key="logout" icon={<LogoutOutlined />}>
@@ -116,12 +107,14 @@ const LayoutModule = () => {
             <img src={logo} alt="Anvayaa Dementia" style={{ height: '50px', margin: '5px 10px 16px 0px' }} />
             <h2 style={{ color: 'white', margin: 0, fontSize: '16px' }}>Anvayaa Dementia</h2>
           </div>
-          <div style={{ color: 'white', fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
-            {JSON.parse(localStorage.getItem('user'))?.username}
-            <Dropdown overlay={avatarMenu} trigger={['click']}>
-              <Avatar size={44} icon={<UserOutlined />}/>
-            </Dropdown>
-          </div>
+          {isDesktop && (
+            <div style={{ color: 'white', fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
+              {JSON.parse(localStorage.getItem('user'))?.username}
+              <Dropdown overlay={avatarMenu} trigger={['click']}>
+                <Avatar size={44} icon={<UserOutlined />} />
+              </Dropdown>
+            </div>
+          )}
           <Button type="primary" onClick={() => setVisible(true)} style={{ marginRight: '10px', display: window.innerWidth <= 768 ? 'block' : 'none' }}>
             ☰
           </Button>
@@ -147,6 +140,15 @@ const LayoutModule = () => {
                 <Link to={item.path}>{item.label}</Link>
               </Menu.Item>
             ))}
+            <Divider style={{ margin: '10px 0', background: '#fff' }} />
+            {isDesktop || (
+              <div style={{ fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Dropdown overlay={avatarMenu} trigger={['click']}>
+                  <Avatar size={44} icon={<UserOutlined />} />
+                </Dropdown>
+                <h5>{JSON.parse(localStorage.getItem('user'))?.username}</h5>
+              </div>
+            )}
           </Menu>
         </Drawer>
       </Header>
@@ -190,5 +192,6 @@ const LayoutModule = () => {
     </Layout>
   );
 };
+
 
 export default LayoutModule;

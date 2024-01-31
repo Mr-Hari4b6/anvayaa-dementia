@@ -1,28 +1,39 @@
 import React from "react";
 import { Button, Card, Image, List, message } from "antd";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import './style.scss';
 
 const ActivityDetails = () => {
   const activityDetails = useLocation();
+  const navigate = useNavigate();
+
   const handleSkip = () => {
     try {
       const userDetails = JSON.parse(localStorage.getItem('userDetails')) || [];
       const user = JSON.parse(localStorage.getItem('user')) || {};
-      const foundUser = userDetails.find(u => u.mobilenumber === user.mobilenumber);
-
+      const foundUser = userDetails.find((u) => u.mobilenumber === user.mobilenumber);
+  
       if (foundUser) {
+        const currentIndex = foundUser.activities.findIndex(
+          (activity) => activity.activityID === activityDetails.state.activityID
+        );
         foundUser.activities = foundUser.activities.map(activity => {
           if (activity.activityID === activityDetails.state.activityID) {
             activity.skipped = true;
           }
           return activity;
         });
-
-        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        if (currentIndex < foundUser.activities.length - 1) {
+          const nextActivity = foundUser.activities[currentIndex + 1];
+          localStorage.setItem('userDetails', JSON.stringify(userDetails));
+          navigate(`/layout/activities/activity/${nextActivity.activityID}`, {
+            state: nextActivity,
+          });
+        } else {
+          navigate('/layout/activities/activitiesList');
+        }
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.error('Error while skipping activity:', error);
       message.error('Error occurred while skipping activity. Please try again.');
     }
@@ -43,6 +54,7 @@ const ActivityDetails = () => {
         });
 
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        navigate('/layout/activities/activitiesList');
       }
     } catch (error) {
       console.error('Error while marking activity as completed:', error);
@@ -54,19 +66,15 @@ const ActivityDetails = () => {
     <div>
       <h2>
         Activity Details</h2>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', padding: '5px' }}>
-        <Button style={{ backgroundColor: 'yellow' }} onClick={handleSkip}>Skip</Button>
-        <Image className="activity-image" src={activityDetails.state.mainImage} width={200} height={150} preview={false} />
-        <Button style={{ backgroundColor: '#8c61af', color: 'white' }} onClick={handleMarkAsCompleted}>Mark as completed</Button>
-      </div>
+     
       <div>
         <Card className="activity-description" bordered>
-          <h3>{activityDetails.state.title}</h3>
-          <h5>{activityDetails.state.description}</h5>
+          <h3 style={{color:'purple'}}>{activityDetails.state.title}</h3>
+          <h5 style={{color:'red'}}>{activityDetails.state.description}</h5>
 
         </Card>
       </div>
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px' }} >
         <List
           style={{ padding: 0 }}
           grid={{ gutter: 5, column: 3 }}
@@ -76,15 +84,20 @@ const ActivityDetails = () => {
               <Card bordered={false} className="steps-card">
                 <div className="steps-card">
                   <div style={{}}>
-                    <h5 style={{ color: 'white' }}>Step: {index + 1}</h5>
+                    <h4 style={{ fontWeight:'bold',color:'purple' }}>Step: {index + 1}</h4>
                     <p>{task}</p>
                   </div>
-                  <div style={{ fontWeight: '600' }}>{task.title}</div>
+                  <div style={{ fontWeight: 'bold' }}>{task.title}</div>
                 </div>
               </Card>
             </List.Item>
           )}
         />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', padding: '5px' }}>
+        <Button style={{ backgroundColor: 'yellow' }} onClick={handleSkip}>Skip</Button>
+        <Image className="activity-image" src={activityDetails.state.mainImage} width={200} height={150} preview={false} />
+        <Button style={{ backgroundColor: '#8c61af', color: 'white' }} onClick={handleMarkAsCompleted}>Mark as completed</Button>
       </div>
     </div>
   )

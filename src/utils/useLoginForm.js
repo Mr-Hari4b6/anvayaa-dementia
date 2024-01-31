@@ -29,7 +29,7 @@ const useLoginForm = () => {
                 e.preventDefault();
                 localStorage.setItem('isLoggedIn', true);
                 localStorage.setItem('user', JSON.stringify(foundUser));
-                navigate('/layout/profile');
+                navigate('/layout/profile/profileDetails');
                 message.success('Login successful:');
             } else {
                 message.error('Login failed: User not found or incorrect credentials');

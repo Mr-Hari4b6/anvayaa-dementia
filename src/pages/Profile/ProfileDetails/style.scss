@@ -1,0 +1,40 @@
+.user-card {
+  height: 100vh;
+}
+.card-title {
+  background-color: #1890ff;
+  color: white;
+}
+
+.contact-info-divider {
+  background-color: #1890ff;
+}
+
+.pwd-profile-title {
+  color: #1890ff;
+  padding-left: 20px;
+}
+.pwd-values {
+  font-weight:normal;
+  color:maroon
+}
+.pwd-profile-section {
+  padding: 20px;
+}
+.add-pwd-details-button {
+  margin: 16px;
+  background-color: purple;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  float: right;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+  &:hover {
+    background-color: green;
+  }
+}
+.pwd-profile-text {
+  margin-bottom: 10px;
+}

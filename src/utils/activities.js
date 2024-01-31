@@ -239,7 +239,7 @@ export const userDetails = [
     "activities": [{
       activityID: "ACT01",
       title: "Memory Lane",
-      date: "12-01-2024",
+      date: "01-02-2024",
       description: "Engage in a reminiscence activity by looking at old photos and discussing memories.",
       steps: ["Select old photos", "Discuss memories", "Share stories"],
       duration: "30 minutes",
@@ -251,7 +251,7 @@ export const userDetails = [
     {
       activityID: "ACT02",
       title: "Gardening Therapy",
-      date: "12-01-2024",
+      date: "01-02-2024",
       description: "Spend time planting flowers or herbs in the garden. It provides a sense of accomplishment.",
       steps: ["Choose plants", "Plant seeds", "Water regularly", "Enjoy the garden"],
       duration: "45 minutes",
@@ -263,7 +263,7 @@ export const userDetails = [
     {
       activityID: "ACT03",
       title: "Music Therapy",
-      date: "13-01-2024",
+      date: "30-01-2024",
       description: "Listen to calming music and engage in simple movements. Music can evoke positive emotions.",
       steps: ["Select favorite music", "Sit comfortably", "Move gently with the rhythm"],
       duration: "20 minutes",
@@ -275,7 +275,7 @@ export const userDetails = [
     {
       activityID: "ACT04",
       title: "Art and Craft",
-      date: "13-01-2024",
+      date: "30-01-2024",
       description: "Express creativity through painting or crafting. It stimulates cognitive abilities.",
       steps: ["Gather art supplies", "Create a masterpiece", "Display the artwork"],
       duration: "40 minutes",
@@ -287,7 +287,7 @@ export const userDetails = [
     {
       activityID: "ACT05",
       title: "Nature Walk",
-      date: "14-01-2024",
+      date: "29-01-2024",
       description: "Take a gentle walk in a nearby park or garden. Nature has therapeutic benefits.",
       steps: ["Put on comfortable shoes", "Enjoy the surroundings", "Breathe deeply"],
       duration: "25 minutes",
@@ -299,7 +299,7 @@ export const userDetails = [
     {
       activityID: "ACT06",
       title: "Puzzle Time",
-      date: "14-01-2024",
+      date: "29-01-2024",
       description: "Work on a jigsaw puzzle to enhance problem-solving skills and concentration.",
       steps: ["Choose a puzzle", "Assemble the pieces", "Celebrate completion"],
       duration: "35 minutes",
@@ -311,7 +311,7 @@ export const userDetails = [
     {
       activityID: "ACT07",
       title: "Cooking Together",
-      date: "15-01-2024",
+      date: "31-01-2024",
       description: "Prepare a simple recipe together. It fosters a sense of achievement and joy.",
       steps: ["Select a recipe", "Follow instructions", "Share the meal"],
       duration: "50 minutes",
@@ -323,7 +323,7 @@ export const userDetails = [
     {
       activityID: "ACT08",
       title: "Balloon Volleyball",
-      date: "15-01-2024",
+      date: "31-01-2024",
       description: "Engage in a seated balloon volleyball game for physical activity and fun.",
       steps: ["Inflate balloons", "Set up a net", "Enjoy the game"],
       duration: "30 minutes",
@@ -335,7 +335,7 @@ export const userDetails = [
     {
       activityID: "ACT09",
       title: "Reading Circle",
-      date: "16-01-2024",
+      date: "30-01-2024",
       description: "Read a short story or poem together. It promotes communication and imagination.",
       steps: ["Choose reading material", "Take turns reading", "Discuss thoughts"],
       duration: "25 minutes",
@@ -352,23 +352,10 @@ export const userDetails = [
     "email": "ch.venkatakrishna@gmail.com",
     "newpassword": "123456",
     "confirmpassword": "123456",
-    "profileDetails": {
-      "pwdName": "Rajashekar",
-      "age": "60",
-      "gender": "Male",
-      "dob": "1964-05-07T00:31:44.090Z",
-      "occupation": "Teacher",
-      "responderName": "Hari Krishna Reddy",
-      "responderRelation": "Son",
-      "primaryCareGiverName": "Sri Krishna Reddy",
-      "homeCareAttender": "Ramu",
-      "selectedLanguage": "Telugu",
-      "address": "Hyerabad"
-    },
     "activities": [{
       activityID: "ACT01",
       title: "Memory Lane",
-      date: "12-01-2024",
+      date: "02-02-2024",
       description: "Engage in a reminiscence activity by looking at old photos and discussing memories.",
       steps: ["Select old photos", "Discuss memories", "Share stories"],
       duration: "30 minutes",
@@ -380,7 +367,7 @@ export const userDetails = [
     {
       activityID: "ACT02",
       title: "Gardening Therapy",
-      date: "12-01-2024",
+      date: "03-02-2024",
       description: "Spend time planting flowers or herbs in the garden. It provides a sense of accomplishment.",
       steps: ["Choose plants", "Plant seeds", "Water regularly", "Enjoy the garden"],
       duration: "45 minutes",
@@ -391,7 +378,7 @@ export const userDetails = [
     }, {
       activityID: "ACT15",
       title: "Coloring Session",
-      date: "19-01-2024",
+      date: "29-01-2024",
       description: "Engage in coloring activities to promote relaxation and creativity.",
       steps: ["Provide coloring materials", "Choose a coloring sheet", "Enjoy the process"],
       duration: "30 minutes",
@@ -403,7 +390,7 @@ export const userDetails = [
     {
       activityID: "ACT16",
       title: "Storytelling",
-      date: "19-01-2024",
+      date: "29-01-2024",
       description: "Create and share imaginative stories. It enhances cognitive abilities and communication.",
       steps: ["Encourage storytelling", "Share creative tales", "Discuss the stories"],
       duration: "35 minutes",
@@ -415,7 +402,7 @@ export const userDetails = [
     {
       activityID: "ACT17",
       title: "Chair Yoga",
-      date: "20-01-2024",
+      date: "28-01-2024",
       description: "Practice gentle yoga poses while seated to improve flexibility and relaxation.",
       steps: ["Choose comfortable attire", "Follow guided yoga session", "Enjoy the benefits"],
       duration: "25 minutes",
@@ -427,7 +414,7 @@ export const userDetails = [
     {
       activityID: "ACT18",
       title: "Board Games",
-      date: "20-01-2024",
+      date: "01-02-2024",
       description: "Enjoy classic board games for entertainment and cognitive stimulation.",
       steps: ["Select favorite games", "Set up and play", "Celebrate the fun"],
       duration: "40 minutes",
@@ -439,7 +426,7 @@ export const userDetails = [
     {
       activityID: "ACT19",
       title: "Virtual Travel",
-      date: "21-01-2024",
+      date: "30-01-2024",
       description: "Explore different places through virtual travel experiences. It sparks curiosity.",
       steps: ["Use virtual reality or videos", "Discuss travel memories", "Share experiences"],
       duration: "30 minutes",
@@ -451,7 +438,7 @@ export const userDetails = [
     {
       activityID: "ACT20",
       title: "Dance Party",
-      date: "21-01-2024",
+      date: "30-01-2024",
       description: "Dance to favorite tunes for physical activity and enjoyment. It boosts mood.",
       steps: ["Create a playlist", "Dance freely", "Celebrate the joy"],
       duration: "20 minutes",
@@ -463,7 +450,7 @@ export const userDetails = [
     {
       activityID: "ACT21",
       title: "Hand Massage",
-      date: "22-01-2024",
+      date: "01-02-2024",
       description: "Provide gentle hand massages for relaxation and sensory stimulation.",
       steps: ["Use lotion or oil", "Massage with care", "Enjoy the soothing touch"],
       duration: "15 minutes",
@@ -475,7 +462,7 @@ export const userDetails = [
     {
       activityID: "ACT22",
       title: "Ice Cream Social",
-      date: "22-01-2024",
+      date: "30-01-2024",
       description: "Host an ice cream social for a sweet treat and social interaction.",
       steps: ["Prepare favorite toppings", "Enjoy ice cream together", "Share stories"],
       duration: "30 minutes",
@@ -487,7 +474,7 @@ export const userDetails = [
     {
       activityID: "ACT23",
       title: "Singing Session",
-      date: "23-01-2024",
+      date: "02-02-2024",
       description: "Sing familiar songs together for joy and reminiscence.",
       steps: ["Select favorite songs", "Sing along together", "Enjoy the musical experience"],
       duration: "25 minutes",
@@ -499,7 +486,7 @@ export const userDetails = [
     {
       activityID: "ACT24",
       title: "Photo Collage",
-      date: "23-01-2024",
+      date: "04-02-2024",
       description: "Create a collage with photos and memorabilia. It encourages creativity.",
       steps: ["Gather materials", "Arrange and glue items", "Admire the finished collage"],
       duration: "40 minutes",

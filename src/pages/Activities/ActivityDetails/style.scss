@@ -1,35 +1,44 @@
 .steps-list {
     display: flex;
     gap: 20px;
-    justify-content: center;
-  }
-  
-  .steps-card {
-     display: flex;
-      flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.steps-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    // padding: 10px;
-    background-color: #a26fcb;
-     border-radius: 8px;
-    height: 80px;
-     text-align: center;
-  }
-  
-  .step-number {
+    padding: 10px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+    height: 120px;
+    text-align: center;
+}
+
+.step-number {
     font-size: 20px;
-    color: white;
-  }
-  
-  .activity-image {
+    color: #a26fcb;
+}
+
+.activity-image {
     border-radius: 50%;
     padding: 10px;
-  }
-  
-  .activity-description {
-    border: 1px solid black;
+}
+
+.activity-description {
+    border: 1px solid purple;
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
-    background-color: rgb(214, 221, 223);
-  }
-  
+    background-color: lightblue;
+}
+
+@media (max-width: 570px) {
+    .steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: space-between;
+    }
+}

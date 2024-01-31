@@ -4,7 +4,6 @@ import './style.scss';
 import calender from '../../assets/calender.png';
 import bellring from '../../assets/bellring.png';
 import runaway from '../../assets/runaway.png';
-import addlogo from '../../assets/addicon.jpg';
 import plus from '../../assets/plus.png';
 
 const { Search } = Input;
@@ -45,15 +44,17 @@ const Remainders = () => {
     try {
       const userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
       const currentUser = JSON.parse(localStorage.getItem('user')) || {};
-
+  
       const foundUser = userDetails.find((user) => user.mobilenumber === currentUser.mobilenumber);
-
       if (foundUser) {
-        const activityExists = foundUser.activities.some(
-          (userActivity) => userActivity.title === activity.title
+        if (!foundUser.activities) {
+          foundUser.activities = [];
+        }
+        const activityExists = foundUser.activities && foundUser?.activities.find(
+          (userActivity) => userActivity.activityID === activity.activityID
         );
 
-        if (!activityExists) {
+        if (!activityExists || foundUser.activities === undefined) {
           foundUser.activities = [...foundUser.activities, activity];
           userDetails.user = foundUser;
           localStorage.setItem('userDetails', JSON.stringify(userDetails));
@@ -68,6 +69,7 @@ const Remainders = () => {
       message.error('An error occurred while handling the click:', error.message);
     }
   };
+  
 
   return (
     <div>
