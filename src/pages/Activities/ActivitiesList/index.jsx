@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Tooltip } from 'antd';
-import { CheckCircleOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { Card, Tooltip, Button } from 'antd';
+import { CheckCircleOutlined, InfoCircleOutlined, EditOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import './style.scss';
-import profile from '../../../assets/profile.jpg';
-import calender from '../../../assets/calender.png';
 
 const ActivitiesList = () => {
   const [userActivities, setUserActivities] = useState([]);
@@ -51,66 +49,41 @@ const ActivitiesList = () => {
     navigate(`/layout/activities/activity/${id}`, { state: data });
   };
 
-  const parseDate = (date) => {
-    const [day, month, year] = date.split('-');
-    return { day, month, year };
-  };
-
-  const renderTasks = (category, tasks) => {
-    const columnCount = {
-      xs: 1,
-      sm: 2,
-      lg: 3,
-    };
+  const renderTasks = (tasks) => {
 
     return (
-      <div key={category} style={{ marginBottom: '16px' }}>
-        <h2 style={{ fontSize: '14px', marginBottom: '8px' }}>{category}</h2>
-        <Row gutter={8}>
-          {tasks.map((task) => {
-            const { day, month, year } = parseDate(task.date);
-
-            return (
-              <Col key={task.activityID} span={24 / columnCount.lg} xs={24} sm={24 / columnCount.sm} lg={24 / columnCount.lg} style={{ marginBottom: '10px' }}>
-                <Card className="activity-card-content" style={{backgroundColor: task.completed ? 'lightgreen' : (!task.completed && task.skipped ) ? 'orange':''}} onClick={() => handleActivity(task.activityID, task)}>
-                  <div className="activity-header-details">
-                    <img alt={task.title} src={profile} className="activity-logo" />
-                    <div>
-                      <h4 className="activity-name">{task.title}</h4>
-                      <div className="date-info">
-                        <img alt="datePicker" src={calender} className="date-picker-image" />
-                        <div className="card-date">
-                          <span>{day}</span>
-                          <span>{getMonthName(Number(month))}</span>
-                          <span>{year}</span>
-                        </div>
-                      </div>
-                      <p>Duration: {task.duration}</p>
-                      {task.completed && <h4 style={{ color: 'green' }}><CheckCircleOutlined />Completed</h4>}
-                      {!task.completed && task.skipped && <h4 style={{ color: 'purple' }}><InfoCircleOutlined />Skipped</h4>}
+      <div>
+        {tasks.map((task) => {
+          const [day, month] = task.date.split('-');
+          return (
+            <div key={task.date} style={{ marginBottom: '16px' }}>
+              <Tooltip title={task.description}>
+              <Card
+                bordered={false}
+                className="custom-card"
+                style={{ backgroundColor: task.completed ? 'lightgreen' : (!task.completed && task.skipped) ? 'orange' : '' }}
+                onClick={() => handleActivity(task.activityID, task)}
+              >
+                <div style={{ display: 'flex', justifyContent: 'flex-start', gap: 10, alignItems: 'center' }}>
+                  <div className="date-container">
+                    <span>{day}</span>
+                    <span>{getMonthName(Number(month))}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'row', gap: 5, padding: '8px', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{task.title}</div>
+                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                      {task.completed && <CheckCircleOutlined style={{ color: 'green' }} />}
+                      {!task.completed && task.skipped && <InfoCircleOutlined style={{ color: 'purple' }} />}
+                      {task.completed && <span style={{ color: 'green', fontWeight: 'bold' }}>Completed</span>}
+                      {!task.completed && task.skipped && <span style={{ color: 'purple', fontWeight: 'bold' }}>Skipped</span>}
                     </div>
                   </div>
-                  <div className="activity-card-body">
-                    <p>{task.description}</p>
-                  </div>
-                </Card>
-                {/* <Card bordered={false} className="custom-card" onClick={() => handleActivity(task.id, task)}>
-                    <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '20px', alignItems: 'center' }}>
-                      <div className="date-container">
-                        <span>{day}</span>
-                        <span>{getMonthName(Number(month))}</span>
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '90%', padding: '5px' }}>
-                        <div style={{ fontWeight: '600' }}>{task.title}</div>
-                        {task.completed && <h4 style={{ color: 'green', textAlign: 'center', marginRight: '10px' }}><CheckCircleOutlined />Completed</h4>}
-                        {!task.completed && task.skipped && <h4 style={{ color: 'purple', textAlign: 'center', marginRight: '10px' }}><InfoCircleOutlined />Skipped</h4>}
-                      </div>
-                    </div>
-                  </Card> */}
-              </Col>
-            );
-          })}
-        </Row>
+                </div>
+              </Card>
+              </Tooltip>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -145,14 +118,29 @@ const ActivitiesList = () => {
   const { todayTasks, upcomingTasks, passedTasks } = categorizeTasks();
 
   return (
-    <div>
-      <div>
-        <h4 style={{ fontSize: '16px', marginBottom: '10px', color: '#1890ff' }}>To Do List</h4>
+    <>
+      <div style={{display:'flex', alignItems:'center',justifyContent:'space-between', marginBottom: '20px'}}>
+        <h4 style={{ fontSize: '16px', }}>To Do List</h4>
+        <Button type="text" style={{ float: 'right', fontWeight: 'bold',color:'purple' }}
+          icon={<EditOutlined />}
+          onClick={() => navigate('/layout/remainders')}
+        >
+          Add Activity
+        </Button>
       </div>
-      {renderTasks('Today', todayTasks)}
-      {renderTasks('Upcoming', upcomingTasks)}
-      {renderTasks('Passed', passedTasks)}
-    </div>
+      <div>
+        <h2 style={{ fontSize: '18px', marginBottom: '10px' }}>Today</h2>
+        {renderTasks(todayTasks)}
+      </div>
+      <div>
+        <h2 style={{ fontSize: '18px', marginBottom: '10px' }}>Upcoming</h2>
+        {renderTasks(upcomingTasks)}
+      </div>
+      <div>
+        <h2 style={{ fontSize: '18px', marginBottom: '10px' }}>Passed</h2>
+        {renderTasks(passedTasks)}
+      </div>
+    </>
   );
 };
 
