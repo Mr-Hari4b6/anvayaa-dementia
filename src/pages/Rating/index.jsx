@@ -4,15 +4,16 @@ import { Input } from 'antd';
 import './style.scss';
 import smile from '../../assets/smile.png';
 import { Button } from 'antd';
+import { useNavigate } from 'react-router';
 const { TextArea } = Input;
 
 const Feedback = () => {
   const [value, setValue] = useState(0);
   const [allowReply, setAllowReply] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const onChange = (e) => {
-    console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
@@ -21,11 +22,11 @@ const Feedback = () => {
   };
 
   const handleButtonClick = () => {
-    
     console.log('Submit button clicked');
     setTimeout(() => {
       setIsSubmitted(true);
       message.success('Your response is successful. Thanks for the feedback!');
+      navigate('/layout/activities/activitiesList')
     }, 1000);
   }
   return (

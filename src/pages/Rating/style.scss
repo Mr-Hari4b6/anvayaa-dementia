@@ -4,12 +4,13 @@
   align-items: center; 
   justify-content: center; 
   height: 100vh; 
- 
 }
 
 .feedback-container {
   display: flex;
   border: 1px solid #D9D9D9; 
+  background-color: white(255, 132, 255);
+
   height: 420px;
   width: 30rem;
   

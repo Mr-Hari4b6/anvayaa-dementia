@@ -54,7 +54,7 @@ const ActivityDetails = () => {
         });
 
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
-        navigate('/layout/activities/activitiesList');
+        navigate('/layout/activities/feedback');
       }
     } catch (error) {
       console.error('Error while marking activity as completed:', error);
