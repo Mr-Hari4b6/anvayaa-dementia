@@ -61,7 +61,7 @@ const ActivitiesList = () => {
               <Card
                 bordered={false}
                 className="custom-card"
-                style={{ backgroundColor: task.completed ? 'lightgreen' : (!task.completed && task.skipped) ? 'orange' : '' }}
+                style={{ backgroundColor: task.completed ? '#aca6b0' : (!task.completed && task.skipped) ? 'orange' : '' }}
                 onClick={() => handleActivity(task.activityID, task)}
               >
                 <div style={{ display: 'flex', justifyContent: 'flex-start', gap: 10, alignItems: 'center' }}>
@@ -72,9 +72,9 @@ const ActivitiesList = () => {
                   <div style={{ display: 'flex', flexDirection: 'row', gap: 5, padding: '8px', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                     <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{task.title}</div>
                     <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                      {task.completed && <CheckCircleOutlined style={{ color: 'green' }} />}
+                      {task.completed && <CheckCircleOutlined style={{ color: 'purple' }} />}
                       {!task.completed && task.skipped && <InfoCircleOutlined style={{ color: 'purple' }} />}
-                      {task.completed && <span style={{ color: 'green', fontWeight: 'bold' }}>Completed</span>}
+                      {task.completed && <span style={{ color: 'purple', fontWeight: 'bold' }}>Completed</span>}
                       {!task.completed && task.skipped && <span style={{ color: 'purple', fontWeight: 'bold' }}>Skipped</span>}
                     </div>
                   </div>

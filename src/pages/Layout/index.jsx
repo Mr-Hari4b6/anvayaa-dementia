@@ -8,6 +8,8 @@ import profile from '../../assets/profile.jpg';
 import logo from '../../assets/pwdlogo.png';
 import './style.scss';
 
+import Notification from '../Notification';
+
 const { Header, Content, Sider } = Layout;
 
 
@@ -109,6 +111,7 @@ const LayoutModule = () => {
           </div>
           {isDesktop && (
             <div style={{ color: 'white', fontWeight: 'bold', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                 <Notification/>
               {JSON.parse(localStorage.getItem('user'))?.username}
               <Dropdown overlay={avatarMenu} trigger={['click']}>
                 <Avatar size={44} icon={<UserOutlined />} />

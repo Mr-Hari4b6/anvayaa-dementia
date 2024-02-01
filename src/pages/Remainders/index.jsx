@@ -6,8 +6,9 @@ import bellring from '../../assets/bellring.png';
 import runaway from '../../assets/runaway.png';
 import plus from '../../assets/plus.png';
 
-const { Search } = Input;
 
+
+const { Search } = Input;
 const Remainders = () => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [dementiaActivities, setDementiaActivities] = useState([]);
@@ -35,8 +36,6 @@ const Remainders = () => {
 
     setFilteredTasks(filteredBySearch);
   };
-
-
   const handleSearchChange = (e) => {
     handleSearch(e.target.value);
   };
