@@ -14,6 +14,7 @@ import './App.css';
 import Remainders from './pages/Remainders';
 import Feedback from './pages/Rating';
 import EditProfile from './pages/Profile/EditProfile';
+import SearchActivities from './pages/SearchActivities';
 
 const ProtectedRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -39,7 +40,9 @@ function App() {
             <Route path='profileDetails' element={<ProfileDetails />}></Route>
             <Route path='editProfile' element={<EditProfile />}></Route>
           </Route>
+          <Route path='searchActivities' element={<SearchActivities />}></Route>
           <Route path='remainders' element={<Remainders />}></Route>
+
           <Route path='activities' element={<Activities />}>
             <Route path='activitiesList' element={<ActivitiesList />}></Route>
             <Route path='activity/:id' element={<ActivityDetails />}></Route>

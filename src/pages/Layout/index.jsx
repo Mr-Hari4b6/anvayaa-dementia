@@ -29,6 +29,11 @@ const menuItems = [
     path: '/layout/activities/activitiesList',
   },
   {
+    key: 'search activities',
+    label: 'Search Activities',
+    path: '/layout/searchActivities'
+  },
+  {
     key: 'adding remainders',
     label: 'Adding Remainders',
     path: '/layout/remainders'
