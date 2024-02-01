@@ -3,6 +3,7 @@ import { Button, Card, Image, List, message } from "antd";
 import { useLocation, useNavigate } from "react-router";
 import './style.scss';
 
+
 const ActivityDetails = () => {
   const activityDetails = useLocation();
   const navigate = useNavigate();
@@ -69,8 +70,8 @@ const ActivityDetails = () => {
      
       <div>
         <Card className="activity-description" bordered>
-          <h3 style={{color:'black'}}>{activityDetails.state.title}</h3>
-          <h5 style={{color:'red'}}>{activityDetails.state.description}</h5>
+          <div style={{color:'black',fontSize:'18px',fontStyle:'inherit',fontWeight:'bolder'}}>{activityDetails.state.title}</div>
+          <div style={{color:'black',fontSize:'14px'}}>{activityDetails.state.description}</div>
 
         </Card>
       </div>
@@ -84,7 +85,7 @@ const ActivityDetails = () => {
               <Card bordered={false} className="steps-card">
                 <div className="steps-card">
                   <div style={{}}>
-                    <h4 style={{ fontWeight:'bold',color:'black' }}>Step: {index + 1}</h4>
+                    <h4 style={{ fontWeight:'bold',color:'#a26fcb' }}>Step: {index + 1}</h4>
                     <p>{task}</p>
                   </div>
                   <div style={{ fontWeight: 'bold' }}>{task.title}</div>

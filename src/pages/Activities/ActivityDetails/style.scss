@@ -10,10 +10,11 @@
     flex-direction: column;
     align-items: center;
     // padding: 10px;
-    background-color: #ede6f0;
+    background-color: #F1F1F1;
     border-radius: 10px;
-    height: 120px;
+    height: 100px;
     text-align: center;
+   
 }
 
 .step-number {
@@ -27,11 +28,11 @@
 }
 
 .activity-description {
-    border: 1px solid rgb(238, 232, 232);
+    border: 1px solid #eee8e8;
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
-    background-color: #fdfdfd;
+    background-color: #F1F1F1;
 }
 
 @media (max-width: 570px) {
